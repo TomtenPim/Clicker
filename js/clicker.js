@@ -11,6 +11,7 @@ const clickerButton = document.querySelector('#click');
 const moneyTracker = document.querySelector('#money');
 const mpsTracker = document.querySelector('#mps'); // money per second
 const mpcTracker = document.querySelector('#mpc'); // money per click
+const upgradesTracker = document.querySelector('#upgrades');
 const upgradeList = document.querySelector('#upgradelist');
 const msgbox = document.querySelector('#msgbox');
 
@@ -24,6 +25,7 @@ const msgbox = document.querySelector('#msgbox');
 let money = 0;
 let moneyPerClick = 1;
 let moneyPerSecond = 0;
+let acquiredUpgrades = 0;
 let last = 0;
 
 let achievementTest = false;
@@ -42,7 +44,7 @@ clickerButton.addEventListener(
     'click',
     () => {
         // vid click öka score med 1
-        money += moneyPerClick;
+        money += (moneyPerClick*(acquiredUpgrades/10 + 1));
         // console.log(clicker.score);
     },
     false
@@ -61,6 +63,7 @@ function step(timestamp) {
     moneyTracker.textContent = Math.round(money);
     mpsTracker.textContent = moneyPerSecond;
     mpcTracker.textContent = moneyPerClick;
+    upgradesTracker.textContent = acquiredUpgrades;
 
     if (timestamp >= last + 1000) {
         money += moneyPerSecond;
@@ -71,7 +74,7 @@ function step(timestamp) {
     // achievements. Titta dock på upgrades arrayen och gör något rimligare om du
     // vill ha achievements.
     // på samma sätt kan du även dölja uppgraderingar som inte kan köpas
-    if (moneyPerClick == 10 && !achievementTest) {
+    if (acquiredUpgrades == 10 && !achievementTest) {
         achievementTest = true;
         message('Du har hittat en FOSSIL!', 'achievement');
     }
@@ -107,19 +110,33 @@ window.addEventListener('load', (event) => {
  */
 upgrades = [
     {
-        name: 'Fin sop',
+        name: 'Short time jump',
         cost: 10,
-        amount: 1,
+        clicks: 1,
     },
     {
-        name: 'Spade',
+        name: 'Stock',
+        cost: 40,
+        amount: 3,
+    },
+    {
+        name: 'Consort Workers',
         cost: 100,
         amount: 10,
     },
     {
-        name: 'Hjälpreda',
+        name: 'Large Time Jump',
+        cost: 413,
+        clicks: 10,
+    },
+    {
+        name: 'Future Exchange',
         cost: 1000,
         amount: 100,
+    },
+    {
+        name: 'Time Tables',
+        cost: 100000,
     },
 ];
 
@@ -147,20 +164,33 @@ function createCard(upgrade) {
     const header = document.createElement('p');
     header.classList.add('title');
     const cost = document.createElement('p');
-
-    header.textContent = `${upgrade.name}, +${upgrade.amount} per sekund.`;
-    cost.textContent = `Köp för ${upgrade.cost} benbitar.`;
+    if (upgrade.amount) {
+        header.textContent = `${upgrade.name}, +(${upgrade.amount}) Grist per second.`;
+    } else if (upgrade.clicks) {
+        header.textContent = `${upgrade.name}, +(${upgrade.clicks}) Time clones.`;
+    } else {
+        header.textContent = `${upgrade.name}, Doubles Grist per second.`;
+    }
+    cost.textContent = `Buy for ${upgrade.cost} Grist.`;
 
     card.addEventListener('click', (e) => {
-        if (money >= upgrade.cost) {
-            moneyPerClick++;
+        if (money >= upgrade.cost && upgrade.name == 'Time Tables') {
+            acquiredUpgrades++;
             money -= upgrade.cost;
             upgrade.cost = Math.floor(upgrade.cost * 1.5);
-            cost.textContent = 'Köp för ' + upgrade.cost + ' benbitar';
-            moneyPerSecond += upgrade.amount;
-            message('Grattis du har lockat till dig fler besökare!', 'success');
+            cost.textContent = 'Buy for ' + upgrade.cost + ' Grist';
+            moneyPerSecond += moneyPerSecond;
+            message('Your market presence increased!', 'success');
+        } else if (money >= upgrade.cost) {
+            acquiredUpgrades++;
+            money -= upgrade.cost;
+            upgrade.cost = Math.floor(upgrade.cost * 1.5);
+            cost.textContent = 'Buy for ' + upgrade.cost + ' Grist';
+            moneyPerSecond += upgrade.amount ? upgrade.amount : 0;
+            moneyPerClick += upgrade.clicks ? upgrade.clicks : 0;
+            message('Your market presence increased!', 'success');
         } else {
-            message('Du har inte råd.', 'warning');
+            message('You can not afford this.', 'warning');
         }
     });
 
