@@ -42,7 +42,7 @@ let achievements = [
         acquired: false
     },
     {
-        name: 'Bezzoz2',
+        name: 'Bezzos2',
         description: 'You´re the new Bezzos',
         value: 100,
         acquired: false
@@ -114,14 +114,17 @@ function step(timestamp) {
     achievements.forEach(achievement => {
         if (acquiredUpgrades >= achievement.value && !achievement.acquired) {
             achievement.acquired = true;
+            message(achievement.name, 'achievement');
             message(achievement.description, 'achievement');
         }
         else if (money>= achievement.money && !achievement.acquired) {
             achievement.acquired = true;
+            message(achievement.name, 'achievement');
             message(achievement.description, 'achievement');
         }
         else if (moneyPerClick>= achievement.click && !achievement.acquired) {
             achievement.acquired = true;
+            message(achievement.name, 'achievement');
             message(achievement.description, 'achievement');
         }    
     });
