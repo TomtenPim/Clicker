@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Clicker exempel</title>
 </head>
@@ -13,27 +16,27 @@
     <main class="container">
         <header>
             <div class="img-container">
-                <img src="img/Grist.svg" alt="Blue grist" width="200px">
+                <img src="img/Grist.svg" alt="Blue grist" style="width:24%">
             </div>
             <h1>Grist Grinder</h1>
-            <p>Med entusiasm och bara händer ger du dig ut i jakten på fossil till ditt museum.</p>
-            <p>Värva hjälpredor och gräv dig till nya upptäckter.</p>
-            <p>Hur många besökare kan du få?</p>
+            <p>You have found yourself at the Land of Heat and Clockwork.</p>
+            <p>More specificaly its global stock exhange centre.</p>
+            <p>How much grist can you acquire for your session?</p>
         </header>
         <section class="game">
             <div class="game-hud">
                 <ul class="game-currency">
                     <li class="item">
-                        <h1>Grist: <span id="money"></span></h1>
+                        <h3>Grist: <span id="money"></span></h3>
                     </li>
                     <li class="item">
-                        <h1>Time Clones: <span id="mpc"></span></h1>
+                        <h3>Time Clones: <span id="mpc"></span></h3>
                     </li>
                     <li class="item">
-                        <h1>Stocks: <span id="mps"></span></h1>
+                        <h3>Stocks: <span id="mps"></span></h3>
                     </li>
                     <li class="item">
-                        <h1>Market presence: <span id="upgrades"></span></h1>
+                        <h3>Market   presence: <span id="upgrades"></span></h3>
                     </li>
                 </ul>
                 <div class="game-button">
@@ -41,21 +44,17 @@
                 </div>
             </div>
             <div class="w-100">
-                <h1>Uppgraderingar</h1>
+                <h3>Uppgraderingar</h3>
                 <div id="upgradelist"></div>
-            </div>
             </div>
         </section>
     </main>
     <div id="msgbox"></div>
     <footer class="container">
-        <p>Hjälp till att fixa fel och lägga till funktioner, 
-            <a href="https://github.com/jensnti/clicker/issues">issues</a>
-            eller
-            <a href="https://github.com/jensnti/clicker/pulls">pull requests</a>.
-        </p>
-        <p>Grist Grinder is a non-profit fangame based on Homestuck, property of Andrew Hussie and Viz Media</p>
+        <p>Grist Grinder is a non-profit fangame based on <a href="https://www.homestuck.com/">Homestuck©</a></p> 
+        <p>Homestuck© is propperty of Andrew Hussie and Viz Media</p>  
     </footer>
     <script src="js/clicker.js"></script>
 </body>
+
 </html>

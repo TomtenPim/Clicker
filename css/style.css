@@ -112,6 +112,7 @@ footer {
     padding-left: 1rem;
     padding-right: 1rem;
     width: 100%;
+    background-color: #c2cacc;
 }
 @media (min-width: 36rem) {
     .container {
@@ -164,13 +165,20 @@ footer {
 .game-currency {
     list-style: none;
     padding: 0;
+    font-family: 'Press Start 2P', cursive; 
 }
 
 /* för spelelementet används #id som selektor för att skapa css reglerna */
 #click {
     width: 8rem;
     height: 8rem;
-    font-size: 2rem;
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
+    color: #0dc2e6;
+    border: 2px solid #0dc2e6;
+}
+#click:hover{
+    background-color: #e2eaec;
 }
 
 /* #msgbox är elementet som visar sidans toasts, popupmeddelanden
@@ -216,6 +224,7 @@ footer {
     border: 1px solid #646464;
     margin: 0.5rem 0;
     padding: 1rem 0.5rem;
+    background-color: #949a9c;
 }
 
 .card:hover {
@@ -226,4 +235,38 @@ footer {
  */
 .title {
     font-weight: 600;
+}
+
+.game-button{
+
+}
+
+@font-face {    
+    font-family: courierStd;
+    src: url(../css/CourierStdMedium.otf);
+}
+
+
+body{
+    background-image: url(../img/lohac.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: courierStd;
+}
+
+h1{
+    font-family: courierStd;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+p{
+    font-family: courierStd;
+    font-weight: 700;
+}
+
+h3{
+    font-family: courierStd;
+    font-size: 32px;
+    font-weight: 700;
 }
