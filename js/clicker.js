@@ -221,10 +221,10 @@ function createCard(upgrade) {
     } else {
         header.textContent = `${upgrade.name}, Doubles your stocks.`;
     }
-    cost.textContent = `Buy for ${upgrade.cost} Grist.`;
+    cost.textContent = `Buy for ${upgrade.cost} Grist`;
 
     card.addEventListener('click', (e) => {
-        if (money >= upgrade.cost && upgrade.name == 'Time Tables') {
+        if (money >= upgrade.cost && upgrade.name == 'Trusty Time Tables') {
             acquiredUpgrades++;
             money -= upgrade.cost;
             upgrade.cost = Math.floor(upgrade.cost * 1.5);

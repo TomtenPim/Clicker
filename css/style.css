@@ -175,10 +175,14 @@ footer {
     font-size: 20px;
     font-family: 'Press Start 2P', cursive;
     color: #0dc2e6;
-    border: 2px solid #0dc2e6;
+    border: 2px solid #0dc3e7;
 }
 #click:hover{
     background-color: #e2eaec;
+}
+
+#click:active{
+    background-color: #bfe4eb;
 }
 
 /* #msgbox är elementet som visar sidans toasts, popupmeddelanden
