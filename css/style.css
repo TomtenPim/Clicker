@@ -237,10 +237,6 @@ footer {
     font-weight: 600;
 }
 
-.game-button{
-
-}
-
 @font-face {    
     font-family: courierStd;
     src: url(../css/CourierStdMedium.otf);

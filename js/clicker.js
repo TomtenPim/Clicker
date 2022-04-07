@@ -30,16 +30,40 @@ let last = 0;
 
 let achievements = [
     {
-        name: 'fossil',
-        description: 'Du har hittat en FOSSIL!',
+        name: 'Startup',
+        description: 'You´ve got your foot on the market!',
         value: 10,
         acquired: false
     },
     {
-        name: 'arkeolog',
-        description: 'Du har hittat en mumifierad arkeolog!',
-        value: 20,
+        name: 'Buissnes',
+        description: 'You´re well known on LoHaC now!',
+        value: 30,
         acquired: false
+    },
+    {
+        name: 'Bezzoz2',
+        description: 'You´re the new Bezzos',
+        value: 100,
+        acquired: false
+    },
+    {
+        name: 'A winner is you',
+        description: 'You own all grist on LoHaC!',
+        money: 4130000,
+        acquired: false   
+    },
+    {
+        name: 'Me, myself and I',
+        description: 'Your time army is growing!',
+        click: 5,
+        acquired: false   
+    },
+    {
+        name: 'Me, myself and I and I and I...',
+        description: 'You ARE half the market!',
+        click: 100,
+        acquired: false   
     }
 ]
 
@@ -92,6 +116,14 @@ function step(timestamp) {
             achievement.acquired = true;
             message(achievement.description, 'achievement');
         }
+        else if (money>= achievement.money && !achievement.acquired) {
+            achievement.acquired = true;
+            message(achievement.description, 'achievement');
+        }
+        else if (moneyPerClick>= achievement.click && !achievement.acquired) {
+            achievement.acquired = true;
+            message(achievement.description, 'achievement');
+        }    
     });
 
     window.requestAnimationFrame(step);
@@ -145,12 +177,12 @@ upgrades = [
         clicks: 10,
     },
     {
-        name: 'Future Exchange',
+        name: 'Competetor buy-out',
         cost: 1000,
         amount: 100,
     },
     {
-        name: 'Time Tables',
+        name: 'Trusty Time Tables',
         cost: 100000,
     },
 ];
